@@ -130,5 +130,7 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
     "https://backendlsp.onrender.com",
 ]
+CORS_ALLOW_ALL_ORIGINS = True
