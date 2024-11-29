@@ -15,8 +15,9 @@ logger = logging.getLogger(__name__)
 # Cargar todos los modelos en un diccionario
 models = {
     'colores': load_model('tasks/media/colores.h5'),
+    'decisiones': load_model('tasks/media/Decisiones.h5'),
+    'dias': load_model('tasks/media/dias.h5'),
     'numeros': load_model('tasks/media/numeros.h5'),
-    'prendas': load_model('tasks/media/prendas.h5'),
     'saludos': load_model('tasks/media/Saludos.h5')
 }
 
@@ -106,20 +107,24 @@ def recognize_actions_from_video(request, model_key, actions):
 # Funciones específicas para cada categoría de predicción
 @csrf_exempt
 def recognize_colores(request):
-    actions = ['amarillo', 'celeste', 'marron', 'morado', 'rosado', 'verde']
+    actions = ['rojo']
     return recognize_actions_from_video(request, 'colores', actions)
 
 @csrf_exempt
-def recognize_numeros(request):
-    actions = ['uno', 'dos', 'tres', 'cuatro', 'cinco', 'seis', 'siete', 'ocho', 'nueve', 'diez']
-    return recognize_actions_from_video(request, 'numeros', actions)
+def recognize_decisiones(request):
+    actions = ['no', 'si']
+    return recognize_actions_from_video(request, 'decisiones', actions)
 
 @csrf_exempt
-def recognize_prendas(request):
-    actions = ['polo_negro', 'zapato_negro']
-    return recognize_actions_from_video(request, 'prendas', actions)
+def recognize_dias(request):
+    actions = ['lunes']
+    return recognize_actions_from_video(request, 'dias', actions)
 
+@csrf_exempt
+def recognize_numeros(request):
+    actions = ['6', '7', '21']
+    return recognize_actions_from_video(request, 'numeros', actions)
 @csrf_exempt
 def recognize_saludos(request):
-    actions = ['buenas_noches', 'buenas_tardes', 'buenos_dias']
+    actions = ['hola', 'buenos dias', 'adios']
     return recognize_actions_from_video(request, 'saludos', actions)

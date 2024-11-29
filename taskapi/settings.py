@@ -131,5 +131,6 @@ STATIC_URL = 'static/'
 
 CORS_ALLOWED_ORIGINS = [
     "https://backendlsp.onrender.com",
+    "http://localhost:3000",
 ]
 CORS_ALLOW_ALL_ORIGINS = True
