@@ -15,10 +15,11 @@ logger = logging.getLogger(__name__)
 # Cargar todos los modelos en un diccionario
 models = {
     'colores': load_model('tasks/media/colores.h5'),
-    'decisiones': load_model('tasks/media/Decisiones.h5'),
+    'decisiones': load_model('tasks/media/Decisiones.h5'), #no
     'dias': load_model('tasks/media/dias.h5'),
-    'numeros': load_model('tasks/media/numeros.h5'),
-    'saludos': load_model('tasks/media/Saludos.h5')
+    'numeros': load_model('tasks/media/numeros.h5'), #7 #6
+    'saludos': load_model('tasks/media/Saludos.h5'),#holainatanteneo.h5 #adiosinatanteneo.h5
+    'pronombres': load_model('tasks/media/pronombres.h5') #tu
 }
 
 # Inicializar Mediapipe
@@ -113,6 +114,7 @@ def recognize_colores(request):
 @csrf_exempt
 def recognize_decisiones(request):
     actions = ['no', 'si']
+    #actions = ['no']
     return recognize_actions_from_video(request, 'decisiones', actions)
 
 @csrf_exempt
@@ -123,8 +125,16 @@ def recognize_dias(request):
 @csrf_exempt
 def recognize_numeros(request):
     actions = ['6', '7', '21']
+    #actions = ['7']
+    #actions = ['6']
     return recognize_actions_from_video(request, 'numeros', actions)
 @csrf_exempt
 def recognize_saludos(request):
-    actions = ['hola', 'buenos dias', 'adios']
+    actions = ['hola', 'buenos_dias', 'adios']
+    #actions = ['hola']
+    #actions = ['adios']
     return recognize_actions_from_video(request, 'saludos', actions)
+@csrf_exempt
+def recognize_pronombres(request):
+    actions = ['tu']
+    return recognize_actions_from_video(request, 'pronombres', actions)
